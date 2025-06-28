@@ -108,7 +108,7 @@ if (map) {
     const numCircles = 6;
     const mapHeight = map.offsetHeight;
     const mapWidth = map.offsetWidth;
-    const topOffset = 100; // <- povećaj ovu vrednost za više prostora
+    const topOffset = 250; // <- povećaj ovu vrednost za više prostora
     const spacing = (mapHeight + topOffset) / (numCircles + 1);
     const sidePadding = mapWidth * 0.25;
     const circles = [];
@@ -196,7 +196,7 @@ map.appendChild(img);
     storyText.style.opacity = '0';
     storyText.style.zIndex = '4';
     map.appendChild(storyText);
-    map.style.paddingBottom = (window.innerWidth < 450 ? (20) : 10) + 'vh';
+    map.style.paddingBottom = (window.innerWidth < 450 ? (35) : 20) + 'vh';
   
 
     const storyTexts = [
@@ -228,6 +228,7 @@ function moveTo(index) {
 
     // Story text
     storyText.style.opacity = '0';
+  
     setTimeout(() => {
         storyText.innerHTML = storyTexts[index];
 
@@ -415,7 +416,7 @@ function startHackerEffect(table) {
                         // Ručni reset fonta da se izbegne fallback na iOS
                         cell.style.fontFamily = "'Roboto', sans-serif";
                     }
-                }, 20 + rowIndex * 10 + cellIndex * 5);
+                }, 10 + rowIndex * 10 + cellIndex * 5);
             });
         });
 
@@ -459,7 +460,7 @@ else {
                     cell.classList.remove("hack-text");
                     cell.style.fontFamily = "'Roboto', sans-serif";
                 }
-            }, 20 + rowIndex * 10 + cellIndex * 5);
+            }, 10 + rowIndex * 10 + cellIndex * 5);
         });
     });
 }
