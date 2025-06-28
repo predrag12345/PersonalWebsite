@@ -108,7 +108,8 @@ if (map) {
     const numCircles = 6;
     const mapHeight = map.offsetHeight;
     const mapWidth = map.offsetWidth;
-    const spacing = mapHeight / (numCircles + 1);
+    const topOffset = 100; // <- povećaj ovu vrednost za više prostora
+    const spacing = (mapHeight + topOffset) / (numCircles + 1);
     const sidePadding = mapWidth * 0.25;
     const circles = [];
 
@@ -174,7 +175,7 @@ map.appendChild(img);
         const p2 = circles[i + 1];
 
         const curve = document.createElementNS(svgNS, "path");
-        const pathData = createWavyPath(p1, p2, 1, Math.floor(Math.random() * 30) + window.innerWidth < 400 ? 20 : 50);
+        const pathData = createWavyPath(p1, p2, 1, Math.floor(Math.random() * 50) + window.innerWidth < 400 ? 10 : 35);
         curve.setAttribute("d", pathData);
         curve.setAttribute("class", "line");
 
@@ -195,13 +196,13 @@ map.appendChild(img);
     storyText.style.opacity = '0';
     storyText.style.zIndex = '4';
     map.appendChild(storyText);
-    map.style.paddingBottom = (window.innerWidth < 450 ? (10) : 3) + 'vh';
+    map.style.paddingBottom = (window.innerWidth < 450 ? (20) : 10) + 'vh';
   
 
     const storyTexts = [
         "Name: Predrag Budrak <br> Story: I am a creative and sociable person with strong problem-solving skills. I thrive in team environments and enjoy building amazing things. My approach to challenges ensures that no problem goes unsolved. As a tech enthusiast, I’m always eager to expand my knowledge and improve my skills in order to create innovative tech solutions. <br> I've always been passionate about IT, and what follows is a glimpse into my journey so far.",
         "Hobbies: Basketball – Member of BC “Joker” (2010–2016) and BC “Podgorica” (2016–2020). Currently playing in student leagues and recreational 3x3 tournaments. <br> Guitar – Playing guitar in my free time and as a member of the band ETF Overdrive. <br> Rubik’s Cube – Solving 2x2, 3x3, 4x4, and gear cube puzzles. <br> Story: Being interested in a wide range of activities—from music and film to sports—has helped me develop various hobby-related skills. I’m always motivated to explore and master new abilities that I find exciting.",
-        "School: High School for Electro-Technical Studies \"Vaso Aligrudić\", Podgorica <br> Title: Computer Electrotechnician <br> Projects: DjeeBus, SmartPolice, Perjanik (Mobile apps) <br> Awards: Luča A diploma (Top-performing student in elementary and high school) <br> 1st place in the M:tel App Contest 2018 & 2019 (National and Balkan level) <br> 1st place at the national competition Energy in the Wire (Fundamentals of Electrical Engineering) <br> Story: High school was my first real encounter with programming and structured problem-solving. My friends and I were tech geeks—building our own PCs, creating electronic projects, setting up a school radio, websites, and mobile apps. The school provided a well-rounded education in electrical engineering, telecommunications, and computer science. It also encouraged us to participate in various competitions and hackathons, where we grew our knowledge and passion for creating cool, functional technology.",
+        "School: High School for Electro-Technical Studies \"Vaso Aligrudić\", Podgorica <br> Title: Computer Electrotechnician <br> Projects: DjeeBus, SmartPolice, Perjanik (Mobile apps) <br> Awards: Luča A diploma (Top-performing student in elementary and high school) <br> 1st place in the M:tel App Contest 2018 & 2019 (National and Balkan level) <br> 1st place at the national competition Energy in the Wire (Fundamentals of Electrical Engineering) <br> Story: High school was my first real encounter with programming and structured problem-solving. My friends and I were tech geeks—building our own PCs, creating electronic projects, setting up a radio station, websites, and mobile apps. The school provided a well-rounded education in electrical engineering, telecommunications, and computer science. It also encouraged us to participate in various competitions and hackathons, where we grew our knowledge and passion for creating cool, functional technology.",
         "University: Faculty of Electrical Engineering, University of Montenegro <br> Title: BSc in Electronics, Telecommunications, and Computer Engineering <br> Awards: Student Award from the Fund for Quality and Talent <br> Internship: Mobile Application Engineering Intern at VegaIT <br> Certificates: Oracle Academy – Java Foundations, Java Fundamentals, Database Design <br> Project: Smart Farm System (dignest.me) <br> While high school opened the doors to electrical engineering and IT, university shaped me into an engineer. Through a lot of hard work, tasks, projects, labs – and a whole lot of writing – I developed a deep scientific understanding of electromagnetics, telecommunications, electronics, and computer engineering. This experience expanded my mathematical knowledge, improved existing skills, and gave me a more realistic, structured, and problem-oriented mindset that continues to guide me.",
         "University: Faculty of Electrical Engineering, University of Montenegro <br> Title: MSc in Computer Science (Currently attending) <br> Awards: NASA International Space Apps Challenge 2024 – Local winners and global nominees (Seismic Detection Across the Solar System) <br> Organization: EESTEC LC Podgorica – Vice-chairperson for IT <br> Story: I’m currently pursuing my MSc in Computer Science, diving deeper into topics such as neural networks, adaptive systems, heuristic optimization, algorithm theory, information theory, and coding. The combination of formal education and self-driven learning has opened the door to the fascinating world of AI and ML. I’m actively working on labs and projects that are helping me build practical skills in these fields.",
         "Story: What’s next? This is just the beginning. I’m continuing to learn, build, and grow. Many exciting steps lie ahead – to be continued..."
@@ -377,36 +378,104 @@ document.getElementById('rightArrow').addEventListener('click', () => {
 
     observer.observe(skillTable);
 
-
 function startHackerEffect(table) {
 
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
+    if (window.innerWidth > 1000) { 
+
+        const chars = "01";
+        const rows = Array.from(table.getElementsByTagName("tr"));
+
+        rows.forEach((row, rowIndex) => {
+            const cells = row.children;
+            Array.from(cells).forEach((cell, cellIndex) => {
+                const original = cell.textContent;
+                const length = original.length;
+                let iterations = 0;
+
+                const interval = setInterval(() => {
+                    let result = "";
+
+                    for (let i = 0; i < length; i++) {
+                        if (i < iterations) {
+                            result += original[i]; // otkriven karakter
+                        } else {
+                            result += chars[Math.floor(Math.random() * chars.length)];
+                        }
+                    }
+
+                    cell.textContent = result;
+                    cell.classList.add("hack-text");
+
+                    iterations += 1;
+                    if (iterations > length) {
+                        clearInterval(interval);
+                        cell.textContent = original;
+                        cell.classList.remove("hack-text");
+
+                        // Ručni reset fonta da se izbegne fallback na iOS
+                        cell.style.fontFamily = "'Roboto', sans-serif";
+                    }
+                }, 20 + rowIndex * 10 + cellIndex * 5);
+            });
+        });
+
+    } 
+
+
+else {
     const rows = Array.from(table.getElementsByTagName("tr"));
 
     rows.forEach((row, rowIndex) => {
         const cells = row.children;
         Array.from(cells).forEach((cell, cellIndex) => {
             const original = cell.textContent;
-            const scrambleLength = original.length;
+            const length = original.length;
             let iterations = 0;
+
             const interval = setInterval(() => {
-                const scrambled = original.split('').map((char, i) => {
-                    if (i < iterations) return original[i];
-                    return chars[Math.floor(Math.random() * chars.length)];
-                }).join('');
-                cell.textContent = scrambled;
+                let result = "";
+
+                for (let i = 0; i < length; i++) {
+                    if (i === iterations - 1) {
+                        // Tekući karakter – zeleni
+                        result += `<span style="color: #00ff00;">${original[i]}</span>`;
+                    } else if (i < iterations) {
+                        // Ranije ispisani – zeleni (privremeno)
+                        result += `<span style="color: #00ff00;">${original[i]}</span>`;
+                    } else {
+                        // Još neispisani – nevidljivi ali prostor drže
+                        result += `<span style="visibility: hidden;">${original[i]}</span>`;
+                    }
+                }
+
+                cell.innerHTML = result;
                 cell.classList.add("hack-text");
 
-                iterations += 1;
-                if (iterations > scrambleLength) {
+                iterations++;
+                if (iterations > length) {
                     clearInterval(interval);
-                    cell.textContent = original;
+                    // Kada se sve završi, prikaži ceo tekst u beloj boji
+                    cell.innerHTML = `<span style="color: white;">${original}</span>`;
                     cell.classList.remove("hack-text");
+                    cell.style.fontFamily = "'Roboto', sans-serif";
                 }
-            }, 15 + rowIndex * 5 + cellIndex * 5); // dodaje zanimljivo kašnjenje po ćeliji
+            }, 20 + rowIndex * 10 + cellIndex * 5);
         });
     });
 }
+
+
+
+
+
+
+
+
+}
+
+
+
+
 
 
 

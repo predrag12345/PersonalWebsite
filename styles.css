@@ -89,6 +89,8 @@ button:hover {
     background-color: #000;
 }
 
+
+
 .contactTable {
     width: 50vw;
     border: 1px solid #fbfbfb;
@@ -111,6 +113,20 @@ button:hover {
 }
 
 
+@media (max-width: 768px) and (min-width:450) {
+
+
+    .skillTable {
+        width: 65vw;
+        display: block;
+        overflow-x: auto;
+        font-size: 14px;
+    }
+
+
+}
+
+
 .infoTable {
     width: 25vw;
     border: 2px solid #fbfbfb;
@@ -129,16 +145,7 @@ button:hover {
 
 }
 
-@media (max-width: 768px) {
 
-
-    .skillTable {
-        width: 70vw;
-        display: block;
-        overflow-x: auto;
-    }
-
-}
 
 /*Ovaj class ne radi nista*/
 .profileButtonsContainer {
@@ -351,6 +358,11 @@ button:hover {
     .mobileMenuIcon {
         display: block;
     }
+
+    .contactTable {
+    width: 65vw !important;
+    }
+
 }
 @media (max-width: 1200px) and (min-width: 769px) {
     .profileSection {
@@ -429,6 +441,7 @@ button:hover {
 
 .hack-text {
     color: #00ff00 !important;
-    font-family: monospace;
-    letter-spacing: 1px;
+    font-family:  Roboto;
+    font-size: 14px ;
+    /* letter-spacing: 1px; */
 }
