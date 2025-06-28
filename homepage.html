@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predrag Budrak</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">    
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="tsparticles"></div>
+    
+ <div class="profileSection">
+    <div class="buttonColumn left">
+        <button class="profileButton" id="btnMyStory" onclick="scrollToElement('myStory')"> 
+            <img src="img/myStoryBtn1.png" alt="My Story Icon" class="buttonIcon" />
+        </button>
+        <button class="profileButton" id="btnSkills" onclick="scrollToElement('skills')">
+            <img src="img/skillsBtn.png" alt="Skills Icon" class="buttonIcon" />
+        </button>
+    </div>
+
+    <img src="img/profile10.png" alt="Developer Image" class="profilePic" />
+
+    <div class="buttonColumn right">
+        <button class="profileButton" id="btnContact">
+            <img src="img/blogBtn.png" alt="Blog Icon" class="buttonIcon" />
+        </button>
+        <button class="profileButton" id="btnInfo" onclick="scrollToElement('contact')">
+            <img src="img/contactBtn1.png" alt="Contact Icon" class="buttonIcon" />
+        </button>
+    </div>
+</div>
+
+    
+    <table class="infoTable">
+        <tr>
+            <tr> <td><p>Djaplexx</p></td></tr>
+        </tr>
+    </table>
+    
+    <div class="mainTitle" id="myStory">
+        <p>My Story</p>
+    </div>
+
+
+<div class="map" id="mapContainer">
+        <div class="arrows" id="navButtons">
+        <button id="leftArrow">&lt; Back</button>
+        <button id="rightArrow">Next &gt;</button>
+    </div>
+
+  <img id="portrait" src="img/portrait.png" class="avatar" style="display: none;" />
+  <img id="animFrame" src="" class="avatar-frame" style="display:none;" />
+  <div id="storyText" class="story-text"></div>
+</div>
+
+    <!-- mapa i putanja -->
+
+
+    <div class="mainTitle" id="skills">
+        <p>Skills Overview</p>
+    </div>
+
+    <table class="skillTable" id="skillHackEffect">
+        <tr>
+            <th>Skill Category</th>
+            <th>Skill Details</th>
+        </tr>
+        <tr>
+            <td>Android App Development</td>
+            <td>Strong proficiency in Kotlin and Java for Android app development</td>
+        </tr>
+        <tr>
+            <td>Desktop Applications</td>
+            <td>Highly proficient in Java, with experience in building desktop applications</td>
+        </tr>
+        <tr>
+            <td>Web Services</td>
+            <td>Strong proficiency in developing web services using Spring Boot framework</td>
+        </tr>
+        <tr>
+            <td>Other Programming Languages</td>
+            <td>Solid proficiency in C, C++, Python and MATLAB languages</td>
+        </tr>
+        <tr>
+            <td>Database Knowledge</td>
+            <td>Solid knowledge in database design and MySQL language</td>
+        </tr>
+        <tr>
+            <td>Artificial Intelligence</td>
+            <td>Solid knowledge in Artificial intelligence and Machine Learning</td>
+        </tr>
+        <tr>
+            <td>Algorithms</td>
+            <td>Good understanding of search, sorting, heuristic, graph, and cryptographic algorithms</td>
+        </tr>
+        <tr>
+            <td>Web Development</td>
+            <td>Solid proficiency in HTML/CSS3 and JavaScript language</td>
+        </tr>
+        <tr>
+            <td>Design Tools</td>
+            <td>Photoshop/Adobe Illustrator</td>
+        </tr>
+    </table>
+    
+
+    <div class="mainTitle" id="contact">
+        <p>Contact</p>
+    </div>
+
+    <table class="contactTable">
+        <tr>
+            <td><a href="https://github.com/your-username" target="_blank"><img src="img/git.png" alt="GitHub" class="contact-icon"></a></td>
+            <td><a href="https://www.linkedin.com/in/your-profile" target="_blank"><img src="img/linkedin.png" alt="LinkedIn" class="contact-icon"></a></td>
+            <td><a href="mailto:your-email@example.com"><img src="img/gmail.png" alt="Gmail" class="contact-icon"></a></td>
+        </tr>
+    </table>
+
+    <div class="footer">
+        <p>&copy; 2025 Djaplexx. All rights reserved.</p>
+    </div>
+    
+
+
+
+    <div class="mobileMenuIcon" onclick="toggleSidebar()">
+        ☰
+    </div>
+    
+    <div id="sidebarMenu" class="sidebarMenu">
+        <button onclick="scrollToElement('myStory')">My Story</button>
+        <button onclick="scrollToElement('skills')">Skills</button>
+        <button onclick="scrollToElement('contact')">Contact</button>
+        <button onclick="scrollToElement('contact')">Blog</button>
+    </div>
+
+</body>
+
+</html>

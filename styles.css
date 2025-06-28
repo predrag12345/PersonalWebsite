@@ -1,0 +1,434 @@
+body {
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center; 
+    /* background: linear-gradient(to bottom, #3a1c71, #2a0845, #000000); */
+    width: 100vw;
+    overflow-x: hidden !important;
+}
+
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+}
+
+
+p{
+    font-family: Roboto;
+    color: aliceblue;
+    text-align: center;
+}
+.mainTitle{
+    font-size: 42px;
+}
+
+
+
+.footer{
+    font-size: 18px;
+}
+
+.arrows {
+
+    position: absolute;
+    display: flex;
+    gap: 20px;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    pointer-events: auto;
+
+
+}
+
+button {
+    font-size: 24px;
+    padding: 10px 10px;
+    background-color: black;
+    cursor: pointer;
+    color:#fbfbfb;
+}
+button:hover {
+    font-size: 24px;
+    padding: 15px 15px;
+    background-color: black;
+    cursor: pointer;
+    color:#fbfbfb;
+    border: 1px solid white;
+}
+
+.profilePic{
+    margin-top: 5vh;
+    height: 80vh;
+    /* fix margine */
+    margin-right: 15px;
+}
+
+
+.skillTable {
+    width: 70vw;
+    border-collapse: collapse;
+}
+.skillTable th, .skillTable td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #fbfbfb;
+    font-family: Roboto;
+    color: aliceblue;
+}
+.skillTable th {
+    background-color: #000;
+}
+
+.contactTable {
+    width: 50vw;
+    border: 1px solid #fbfbfb;
+    margin: 0 auto; 
+}
+
+.contactTable td {
+    text-align: center; 
+    vertical-align: middle; 
+}
+
+.contactTable td img {
+    width: 60px;
+    display: block; 
+    margin: 0 auto; 
+}
+
+.contactTable td a {
+    display: inline-block; 
+}
+
+
+.infoTable {
+    width: 25vw;
+    border: 2px solid #fbfbfb;
+    border-radius: 1rem;
+    margin: 0 auto; 
+}
+
+.infoTable td {
+    text-align: center; 
+    vertical-align: middle; 
+}
+
+.infoTable  p {
+    display: inline-block; 
+    font-size: 24px;
+
+}
+
+@media (max-width: 768px) {
+
+
+    .skillTable {
+        width: 70vw;
+        display: block;
+        overflow-x: auto;
+    }
+
+}
+
+/*Ovaj class ne radi nista*/
+.profileButtonsContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -360px; /* Podešavanje da dugmad budu bliže slici */
+    margin-bottom: 360px;
+}
+
+
+.buttonColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Razmak između dugmadi */
+}
+
+.buttonColumn.left {
+    position: static;
+    transform: none;
+}
+
+.buttonColumn.right {
+    position: static;
+    transform: none;
+}
+
+.profileButton {
+    width: 200px;
+    height: 230px;
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    border: 2px solid white;
+    cursor: pointer;
+    font-family: Roboto, sans-serif;
+    border-radius: 1rem;
+
+}
+
+.buttonIcon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.profileButtona {
+ 
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    border: 0px solid white ;
+    font-family: Roboto, sans-serif;
+}
+
+.profileButton:hover , .profileButtona:hover{
+    /* background-color: #fbfbfb; */
+    background-color: transparent;
+    border-color: #aaa;
+    border-radius: 1rem;
+    border: 3px solid #aaa;
+
+
+}
+
+.map {
+    position: relative;
+ background-color: rgba(0, 0, 0, 0.6);
+    height: 150vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 2;
+      display: flex;
+     align-items: center;
+    justify-content: center;
+    opacity: 0.85;
+    
+
+}
+
+.avatar, .avatar-frame {
+  position: absolute;
+  width: 50px;
+  height: 85px;
+  margin-left: 4px;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 1.0 ;
+}
+
+.avatar-frame { display: none; }
+
+.circle-img {
+  position: absolute;
+ 
+  width: 180px;
+  height: 110px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 3;
+}
+
+.line {
+    opacity: 0.6;
+    stroke: white;
+    stroke-dasharray: 6, 6;
+    stroke-linecap: round;
+    stroke-width: 2;
+    fill: none;
+}
+
+
+/* Hamburger icon - only shown on mobile */
+.mobileMenuIcon {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 36px;
+    color: white;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+/* Sidebar menu styles */
+.sidebarMenu {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    height: 100vh;
+    width: 60vw;
+    padding-top: 60px;
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.sidebarMenu button {
+    font-size: 24px;
+    padding: 20px;
+    background: none;
+    border: none;
+    color: white;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+}
+
+.sidebarMenu button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+.profileSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 5vh;
+    gap: 20px;
+}
+.buttonColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profilePic {
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    object-fit: contain;
+    
+}
+
+/* Mobile only */
+@media (max-width: 768px) {
+    .infoTable{display: none;}
+    .buttonColumn {
+        display: none;
+    }
+
+    .profilePic {
+        width: 95vw;
+        height: auto;
+        max-height: 95vh;
+        object-fit: contain;
+        margin-top: 3vh;
+    }
+
+    .mobileMenuIcon {
+        display: block;
+    }
+}
+@media (max-width: 1200px) and (min-width: 769px) {
+    .profileSection {
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+
+    .profilePic {
+        max-height: 60vh;
+        width: auto;
+        height: auto;
+        max-width: 50vw;
+    }
+
+    .profileButton {
+        width: 150px;
+        height: 180px;
+    }
+
+    .buttonIcon {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+
+
+.story-text {
+    position: absolute;
+    color: white;
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 450px;
+    font-family: Roboto;
+    z-index: 3;
+    display: none;
+    transition: all 0.4s ease;
+}
+
+.square-indicator {
+  width: 55px;
+  height: 55px;
+  background-color: #00bfa5;
+  position: absolute;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.movingSquare {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    background-color: #00ffcc;
+    border: 2px solid white;
+    z-index: 3;
+}
+
+
+
+ 
+.arrows button {
+    font-size: 20px;
+    padding: 5px 10px;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.arrows button:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.hack-text {
+    color: #00ff00 !important;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
