@@ -196,7 +196,7 @@ map.appendChild(img);
     storyText.style.opacity = '0';
     storyText.style.zIndex = '4';
     map.appendChild(storyText);
-    map.style.paddingBottom = (window.innerWidth < 450 ? (35) : 20) + 'vh';
+    map.style.paddingBottom = (window.innerWidth < 450 ? (45) : 20) + 'vh';
   
 
     const storyTexts = [
